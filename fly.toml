@@ -1,0 +1,27 @@
+# Fly.io deployment config for activity-tracker
+# Deploy: fly launch --config fly.toml
+
+app = "activity-tracker"
+primary_region = "sin"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[http_service]
+  internal_port = 8090
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "512mb"
+
+[env]
+  PORT = "8090"
+
+# Uncomment for persistent storage (Fly volume)
+# [mounts]
+#   source = "data"
+#   destination = "/app/data"
