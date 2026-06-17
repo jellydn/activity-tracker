@@ -1,0 +1,8 @@
+services:
+  activity-tracker:
+    build: .
+    ports:
+      - "8090:8090"
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
